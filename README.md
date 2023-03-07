@@ -1,24 +1,55 @@
-# README
+API de Gerenciamento de Tarefas
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Esta é uma API desenvolvida em Ruby on Rails para gerenciar tarefas. Ele permite que os usuários se inscrevam e acessem a plataforma para criar, atualizar, excluir e pesquisar tarefas.
+Instalação
 
-Things you may want to cover:
+Para instalar a API, execute os seguintes comandos:
 
-* Ruby version
+shell
 
-* System dependencies
+$ git clone <url do repositório>
+$ cd <nome do diretório>
+$ bundle install
+$ rails db:migrate
+$ rails server
 
-* Configuration
+Endpoints
 
-* Database creation
+Os endpoints disponíveis na API são:
+Autenticação
 
-* Database initialization
+    POST /users/sign_in: para fazer login com as credenciais de usuário.
 
-* How to run the test suite
+Tarefas
 
-* Services (job queues, cache servers, search engines, etc.)
+    GET /tasks: para listar todas as tarefas.
+    GET /tasks/:id: para buscar uma tarefa específica.
+    POST /tasks: para criar uma nova tarefa.
+    PUT /tasks/:id: para atualizar uma tarefa existente.
+    DELETE /tasks/:id: para excluir uma tarefa.
+    GET /search_result: para pesquisar tarefas por palavra-chave.
 
-* Deployment instructions
+Modelo de Dados
 
-* ...
+O modelo de dados consiste em duas tabelas: users e tasks. Cada usuário pode ter várias tarefas. As colunas principais de cada tabela são:
+Usuários
+
+    email: e-mail do usuário.
+    encrypted_password: senha criptografada do usuário.
+
+Tarefas
+
+    name: nome da tarefa.
+    description: descrição da tarefa.
+    due_date: data de vencimento da tarefa.
+    status: status da tarefa (pendente, concluída ou expirada).
+    owner_id: ID do usuário que criou a tarefa.
+
+Validação
+
+    A data de vencimento da tarefa não pode estar no passado.
+    Se uma tarefa expirar, seu status será automaticamente alterado para "expirado".
+
+Autor
+
+Esta API foi desenvolvida por .
