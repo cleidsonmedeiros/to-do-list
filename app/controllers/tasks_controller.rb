@@ -49,6 +49,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def search
+    @tasks = current_user.tasks.where('title LIKE ?', "%#{params[:search]}%")
+    render :index
+  end
+  
+
   private
 
   def set_task

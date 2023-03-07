@@ -47,7 +47,9 @@
 <h1>Tasks</h1>
 
 <table>
+
   <thead>
+
     <tr>
       <th>Title</th>
       <th>Description</th>
@@ -55,15 +57,17 @@
       <th>Status</th>
       <th>Actions</th>
     </tr>
+    
   </thead>
 
   <tbody>
+  <% if @tasks.any? %>
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.title %></td>
         <td><%= task.description %></td>
         <td><%= task.due_date.strftime('%Y-%m-%d') %></td>
-        <td><%= task.status %>
+        <td><%= task.status %></td>
         <td>
           <%= link_to 'Show', task_path(task), class: 'btn' %>
           <%= link_to 'Edit', edit_task_path(task), class: 'btn' %>
@@ -71,6 +75,17 @@
         </td>
       </tr>
     <% end %>
+    <% else %>
+      <tr>
+        <td colspan="5">No tasks found.</td>
+      </tr>
+    <% end %>
+
+    <form action="/search_result" method="get">
+    <input type="text" name="search" placeholder="Digite sua busca aqui...">
+    <button type="submit">Buscar</button>
+    </form>
+
   </tbody>
 </table>
 
