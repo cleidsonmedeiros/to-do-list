@@ -1,3 +1,64 @@
+<style>
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .field {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input[type="text"], textarea, select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  h1 {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+</style>
+
 <h1>Edit Task</h1>
 
 <%= form_with(model: @task, local: true) do |form| %>
@@ -6,9 +67,9 @@
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-      <% @task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @task.errors.full_messages.each do |message| %>
+          <li class="error"><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -30,7 +91,6 @@
 
   <div class="actions">
     <%= form.submit %>
+    <%= link_to 'Back', tasks_path, class: 'btn' %>
   </div>
 <% end %>
-
-<%= link_to 'Back', tasks_path %>

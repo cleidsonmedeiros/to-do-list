@@ -1,3 +1,38 @@
+<style>
+  h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  strong {
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #3e8e41;
+  }
+</style>
+
 <h1><%= @task.title %></h1>
 
 <p><%= @task.description %></p>
@@ -5,5 +40,5 @@
 <strong>Status:</strong> <%= @task.status %><br>
 <strong>Due Date:</strong> <%= @task.due_date.strftime('%Y-%m-%d') %><br>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_task_path(@task), class: 'btn' %> |
+<%= link_to 'Back', tasks_path, class: 'btn' %>
