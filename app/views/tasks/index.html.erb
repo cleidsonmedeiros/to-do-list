@@ -42,6 +42,10 @@
   .btn:hover {
     background-color: #3e8e41;
   }
+
+  .expired {
+    background-color: #ffaaaa;
+  }
 </style>
 
 <h1>Tasks</h1>
@@ -63,7 +67,7 @@
   <tbody>
   <% if @tasks.any? %>
     <% @tasks.each do |task| %>
-      <tr>
+      <tr <%= "class=expired" if task.due_date < Date.today %> >
         <td><%= task.title %></td>
         <td><%= task.description %></td>
         <td><%= task.due_date.strftime('%Y-%m-%d') %></td>

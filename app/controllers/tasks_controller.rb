@@ -3,8 +3,12 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = current_user.tasks.all
+    @tasks = current_user.tasks.order(due_date: :asc)
+    @expired_tasks = @tasks.select(&:expired?)
+    @pending_tasks = @tasks.select { |task| task.status == 'pending' }
+    @completed_tasks = @tasks.select { |task| task.status == 'completed' }
   end
+  
 
   def show
   end
