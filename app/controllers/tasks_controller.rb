@@ -55,7 +55,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :due_date, :priority)
+    params.require(:task).permit(:title, :description, :due_date)
   end
 
   def respond_to_format(task, status)
