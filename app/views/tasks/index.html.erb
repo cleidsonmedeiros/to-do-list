@@ -15,6 +15,7 @@
         <td><%= task.title %></td>
         <td><%= task.description %></td>
         <td><%= task.due_date.strftime('%Y-%m-%d') %></td>
+        <td><%= task.status %></td>
         <td>
           <%= link_to 'Show', task_path(task) %>
           <%= link_to 'Edit', edit_task_path(task) %>

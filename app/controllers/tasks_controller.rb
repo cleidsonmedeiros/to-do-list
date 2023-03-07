@@ -18,6 +18,7 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.build(task_params)
+    @task.status = "pending"
 
     if @task.save
       respond_to_format(@task, :created)
@@ -55,7 +56,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :due_date)
+    params.require(:task).permit(:title, :description, :due_date, :status)
   end
 
   def respond_to_format(task, status)
