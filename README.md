@@ -52,4 +52,4 @@ Validação
 
 Autor
 
-Esta API foi desenvolvida por .
+Esta API foi desenvolvida por Cleidson Medeiros.
