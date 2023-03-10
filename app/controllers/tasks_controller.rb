@@ -4,9 +4,10 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks.order(due_date: :asc)
-    @expired_tasks = @tasks.select(&:expired?)
+    @expired_tasks = @tasks.select(&:is_expired)
     @pending_tasks = @tasks.select { |task| task.status == 'pending' }
     @completed_tasks = @tasks.select { |task| task.status == 'completed' }
+    binding.pry
   end
   
 
